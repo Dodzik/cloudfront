@@ -12,7 +12,6 @@ async function queryForMyGames(request) {
   })
       .then(data => data.json())
   // console.log(data)
-
 }
 
 async function queryForRatingsOfGame(request) {
