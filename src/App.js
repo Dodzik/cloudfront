@@ -93,17 +93,103 @@ async function queryGetTitleContains(request) {
 
 }
 
+async function queryAddingAuthorOfGame(request) {
+    console.log(request)
+    return  fetch('http://localhost:8080/api/authorOfGame', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(request)
+    })
+        .then(data => data.json())
+    // console.log(data)
+
+}
+async function queryGetAuthorsOfGame(request) {
+    console.log(request)
+    return  fetch('http://localhost:8080/api/getAllAuthorsOfGame', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(request)
+    })
+        .then(data => data.json())
+    // console.log(data)
+
+}
+
+async function queryAddGenreToGame(request) {
+    console.log(request)
+    return  fetch('http://localhost:8080/api/addGenreToGame', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(request)
+    })
+        .then(data => data.json())
+    // console.log(data)
+
+}
+async function queryAddSubjectToGame(request) {
+    console.log(request)
+    return  fetch('http://localhost:8080/api/addSubjectToGame', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(request)
+    })
+        .then(data => data.json())
+    // console.log(data)
+
+}
+async function queryGetSubjectsOfGame(request) {
+    console.log(request)
+    return  fetch('http://localhost:8080/api/getSubjectOfGame', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(request)
+    })
+        .then(data => data.json())
+    // console.log(data)
+
+}
+async function queryGetGenresOfGame(request) {
+    console.log(request)
+    return  fetch('http://localhost:8080/api/getGenreOfGame', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(request)
+    })
+        .then(data => data.json())
+    // console.log(data)
+
+}
 
 function App() {
 
   const [data , setData] = useState();
-  const [dataRates , setDataRates] = useState(null);
-  const [dataAvgRate , setDataAvgRate] = useState();
+  const [dataRates , setDataRates] = useState(null)
+  const [dataAvgRate , setDataAvgRate] = useState()
   const [loaded,setLoaded] = useState(false)
-    const [gameName, setGameName] = useState();
+  const [gameName, setGameName] = useState()
   const [points, setpoints] = useState()
-    const [best5games,setBest5games] = useState()
-    const [gamesContains,setGamesContains] = useState()
+  const [best5games,setBest5games] = useState()
+  const [gamesContains,setGamesContains] = useState()
+    const [firstName,setFirstName] = useState()
+    const [lastName,setLastName] = useState()
+    const [authors, setAuthors] = useState()
+    const [genre, setGenre] = useState()
+    const [subject, setSubject] = useState()
+    const [subjects, setSubjects] = useState()
+    const [genres, setGenres] = useState()
 
     async function myGamesClickHandle() {
     console.log("kliknieto games")
@@ -199,6 +285,98 @@ function App() {
         });
         console.log(response)
         await setGamesContains(response)
+        // setLoaded(true)
+    }
+    async function addingAuthorOfGameClickHandle() {
+        console.log("kliknieto")
+        setLoaded(false)
+        // e.preventDefault();
+        console.log("debugging")
+        console.log({
+            title : gameName
+        })
+        const response = await queryAddingAuthorOfGame({
+            firstn: firstName,
+            lastn: lastName,
+            gametitle: gameName
+        });
+        console.log(response)
+        await setGamesContains(response)
+        // setLoaded(true)
+    }
+    async function getAuthorsOfGameClickHandle() {
+        console.log("kliknieto")
+        setLoaded(false)
+        // e.preventDefault();
+        console.log("debugging")
+        console.log({
+            title : gameName
+        })
+        const response = await queryGetAuthorsOfGame({
+            "title" : gameName.toString()
+        });
+        console.log(response)
+        await setAuthors(response)
+        // setLoaded(true)
+    }
+    async function addGenreToGameClickHandle() {
+        console.log("kliknieto")
+        setLoaded(false)
+        // e.preventDefault();
+        console.log("debugging")
+        console.log({
+            title : gameName
+        })
+        const response = await queryAddGenreToGame({
+            "title" : gameName.toString(),
+            "genre" : genre.toString()
+        });
+        console.log(response)
+        // setLoaded(true)
+    }
+    async function addSubjectToGameClickHandle() {
+        console.log("kliknieto")
+        setLoaded(false)
+        // e.preventDefault();
+        console.log("debugging")
+        console.log({
+            title : gameName
+        })
+        const response = await queryAddSubjectToGame({
+            "title" : gameName.toString(),
+            "subjectName" : subject.toString()
+        });
+        console.log(response)
+        // setLoaded(true)
+    }
+    async function getSubjectsOfGameClickHandle() {
+        console.log("kliknieto")
+        setLoaded(false)
+        // e.preventDefault();
+        console.log("debugging")
+        console.log({
+            title : gameName
+        })
+        const response = await queryGetSubjectsOfGame({
+            "title" : gameName.toString()
+        });
+        console.log(response)
+        await setSubjects(response)
+        // setLoaded(true)
+    }
+    async function getGenresOfGameClickHandle() {
+        console.log("kliknieto")
+        setLoaded(false)
+        // e.preventDefault();
+        console.log("debugging")
+        console.log({
+            title : gameName
+        })
+        const response = await queryGetGenresOfGame({
+            "title" : gameName.toString()
+        });
+        console.log(response)
+        await setGenres(response)
         // setLoaded(true)
     }
 
@@ -364,6 +542,176 @@ function App() {
                           )
                       ) }
               </ListGroup>
+              <Form>
+                  <Form.Group>
+
+                      <div className="form-group mt-3">
+                          <label>Adding Author to game, Create Author if he doesn't exists in database</label>
+                          <input
+                              required
+                              className="form-control mt-1"
+                              placeholder="Enter First Name"
+                              onChange={e => setFirstName(e.target.value)}
+                          />
+                          <input
+                              required
+                              className="form-control mt-1"
+                              placeholder="Enter Last Name"
+                              onChange={e => setLastName(e.target.value)}
+                          />
+                          <input
+                              required
+                              className="form-control mt-1"
+                              placeholder="Enter gameName"
+                              onChange={e => setGameName(e.target.value)}
+                          />
+                      </div>
+
+                      <Button
+                          onClick={addingAuthorOfGameClickHandle}
+                      >
+                          Add Author Of Game
+                      </Button>
+                  </Form.Group>
+              </Form>
+
+              <Form>
+                  <Form.Group>
+
+                      <div className="form-group mt-3">
+                          <label>Get all Authors of game</label>
+                          <input
+                              required
+                              className="form-control mt-1"
+                              placeholder="Enter gameName"
+                              onChange={e => setGameName(e.target.value)}
+                          />
+                      </div>
+
+                      <Button
+                          onClick={getAuthorsOfGameClickHandle}
+                      >
+                          Get Authors of game
+                      </Button>
+                  </Form.Group>
+              </Form>
+              <ListGroup>
+                  {authors != null &&
+                      authors.map((item) => (
+                              <ListGroup.Item>{item.firstName} {item.lastName}</ListGroup.Item>
+                          )
+                      ) }
+              </ListGroup>
+
+              <Form>
+                  <Form.Group>
+
+                      <div className="form-group mt-3">
+                          <label>Get all Subjects of game</label>
+                          <input
+                              required
+                              className="form-control mt-1"
+                              placeholder="Enter gameName"
+                              onChange={e => setGameName(e.target.value)}
+                          />
+                      </div>
+
+                      <Button
+                          onClick={getSubjectsOfGameClickHandle}
+                      >
+                          Get Subjects of game
+                      </Button>
+                  </Form.Group>
+              </Form>
+              <ListGroup>
+                  {subjects != null &&
+                      subjects.map((item) => (
+                              <ListGroup.Item>{item.name}</ListGroup.Item>
+                          )
+                      ) }
+              </ListGroup>
+              <Form>
+                  <Form.Group>
+
+                      <div className="form-group mt-3">
+                          <label>Get all Genres of game</label>
+                          <input
+                              required
+                              className="form-control mt-1"
+                              placeholder="Enter gameName"
+                              onChange={e => setGameName(e.target.value)}
+                          />
+                      </div>
+
+                      <Button
+                          onClick={getGenresOfGameClickHandle}
+                      >
+                          Get Genres of game
+                      </Button>
+                  </Form.Group>
+              </Form>
+              <ListGroup>
+                  {genres != null &&
+                      genres.map((item) => (
+                              <ListGroup.Item>{item.name}</ListGroup.Item>
+                          )
+                      ) }
+              </ListGroup>
+
+
+              <Form>
+                  <Form.Group>
+
+                      <div className="form-group mt-3">
+                          <label>Adding Genre to game, Create Genre if he doesn't exists in database</label>
+                          <input
+                              required
+                              className="form-control mt-1"
+                              placeholder="Enter Genre Name"
+                              onChange={e => setGenre(e.target.value)}
+                          />
+                          <input
+                              required
+                              className="form-control mt-1"
+                              placeholder="Enter gameName"
+                              onChange={e => setGameName(e.target.value)}
+                          />
+                      </div>
+
+                      <Button
+                          onClick={addGenreToGameClickHandle}
+                      >
+                          Add Genre Of Game
+                      </Button>
+                  </Form.Group>
+              </Form>
+
+              <Form>
+                  <Form.Group>
+
+                      <div className="form-group mt-3">
+                          <label>Adding Subject to game, Create Subject if he doesn't exists in database</label>
+                          <input
+                              required
+                              className="form-control mt-1"
+                              placeholder="Enter Subject Name"
+                              onChange={e => setSubject(e.target.value)}
+                          />
+                          <input
+                              required
+                              className="form-control mt-1"
+                              placeholder="Enter gameName"
+                              onChange={e => setGameName(e.target.value)}
+                          />
+                      </div>
+
+                      <Button
+                          onClick={addSubjectToGameClickHandle}
+                      >
+                          Add Subject Of Game
+                      </Button>
+                  </Form.Group>
+              </Form>
               {/*</Container>*/}
       {/*  </div>*/}
           </Container>
