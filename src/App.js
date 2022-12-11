@@ -3,7 +3,7 @@ import {Button, Container, Form, ListGroup} from "react-bootstrap";
 
 async function queryForMyGames(request) {
   console.log(request)
-  return  fetch('cloudproject-production.up.railway.app/api/games', {
+  return  fetch('http://cloudproject-production.up.railway.app/api/games', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -17,7 +17,7 @@ async function queryForMyGames(request) {
 
 async function queryForRatingsOfGame(request) {
     console.log(request)
-    return  fetch('cloudproject-production.up.railway.app/api/ratesforgame', {
+    return  fetch('http://cloudproject-production.up.railway.app/api/ratesforgame', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -31,7 +31,7 @@ async function queryForRatingsOfGame(request) {
 
 async function queryForAverageRatingsOfGame(request) {
     console.log(request)
-    return  fetch('cloudproject-production.up.railway.app/api/avgratesforgame', {
+    return  fetch('http://cloudproject-production.up.railway.app/api/avgratesforgame', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -44,7 +44,7 @@ async function queryForAverageRatingsOfGame(request) {
 }
 async function queryForCreateNewGame(request) {
     console.log(request)
-    return  fetch('cloudproject-production.up.railway.app/api/savegame', {
+    return  fetch('http://cloudproject-production.up.railway.app/api/savegame', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -57,7 +57,7 @@ async function queryForCreateNewGame(request) {
 }
 async function queryForRatingGame(request) {
     console.log(request)
-    return  fetch('cloudproject-production.up.railway.app/api/ratethisgame', {
+    return  fetch('http://cloudproject-production.up.railway.app/api/ratethisgame', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -69,7 +69,7 @@ async function queryForRatingGame(request) {
 
 }
 async function queryFor5BestGames() {
-    return  fetch('cloudproject-production.up.railway.app/api/topfivegames', {
+    return  fetch('http://cloudproject-production.up.railway.app/api/topfivegames', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -81,7 +81,7 @@ async function queryFor5BestGames() {
 }
 async function queryGetTitleContains(request) {
     console.log(request)
-    return  fetch('cloudproject-production.up.railway.app/api/filteringTitles', {
+    return  fetch('http://cloudproject-production.up.railway.app/api/filteringTitles', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -95,7 +95,7 @@ async function queryGetTitleContains(request) {
 
 async function queryAddingAuthorOfGame(request) {
     console.log(request)
-    return  fetch('cloudproject-production.up.railway.app/api/authorOfGame', {
+    return  fetch('http://cloudproject-production.up.railway.app/api/authorOfGame', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -108,7 +108,7 @@ async function queryAddingAuthorOfGame(request) {
 }
 async function queryGetAuthorsOfGame(request) {
     console.log(request)
-    return  fetch('cloudproject-production.up.railway.app/api/getAllAuthorsOfGame', {
+    return  fetch('http://cloudproject-production.up.railway.app/api/getAllAuthorsOfGame', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -122,7 +122,7 @@ async function queryGetAuthorsOfGame(request) {
 
 async function queryAddGenreToGame(request) {
     console.log(request)
-    return  fetch('cloudproject-production.up.railway.app/api/addGenreToGame', {
+    return  fetch('http://cloudproject-production.up.railway.app/api/addGenreToGame', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -135,7 +135,7 @@ async function queryAddGenreToGame(request) {
 }
 async function queryAddSubjectToGame(request) {
     console.log(request)
-    return  fetch('cloudproject-production.up.railway.app/api/addSubjectToGame', {
+    return  fetch('http://cloudproject-production.up.railway.app/api/addSubjectToGame', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -148,7 +148,7 @@ async function queryAddSubjectToGame(request) {
 }
 async function queryGetSubjectsOfGame(request) {
     console.log(request)
-    return  fetch('cloudproject-production.up.railway.app/api/getSubjectOfGame', {
+    return  fetch('http://cloudproject-production.up.railway.app/api/getSubjectOfGame', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -161,7 +161,7 @@ async function queryGetSubjectsOfGame(request) {
 }
 async function queryGetGenresOfGame(request) {
     console.log(request)
-    return  fetch('cloudproject-production.up.railway.app/api/getGenreOfGame', {
+    return  fetch('http://cloudproject-production.up.railway.app/api/getGenreOfGame', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
