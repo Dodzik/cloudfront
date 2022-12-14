@@ -12,7 +12,6 @@ async function queryForMyGames(request) {
   })
       .then(data => data.json())
   // console.log(data)
-
 }
 
 async function queryForRatingsOfGame(request) {
@@ -120,6 +119,31 @@ async function queryGetAuthorsOfGame(request) {
 
 }
 
+async function queryForAllusers(request) {
+    return  fetch('http://localhost:8080/api/getAllUsers', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        // body: JSON.stringify(request)
+    })
+        .then(data => data.json())
+    // console.log(data)
+}
+async function queryCreateUser(request) {
+    console.log(request)
+    return  fetch('http://localhost:8080/api/createUser', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(request)
+    })
+        .then(data => data.json())
+    // console.log(data)
+
+}
+
 async function queryAddGenreToGame(request) {
     console.log(request)
     return  fetch('http://localhost:8080/api/addGenreToGame', {
@@ -169,13 +193,13 @@ async function queryGetGenresOfGame(request) {
         body: JSON.stringify(request)
     })
         .then(data => data.json())
-    // console.log(data)
 
 }
 
 function App() {
 
-  const [data , setData] = useState();
+  const [data , setData] = useState()
+  const [login, setLogin] = useState()
   const [dataRates , setDataRates] = useState(null)
   const [dataAvgRate , setDataAvgRate] = useState()
   const [loaded,setLoaded] = useState(false)
@@ -190,6 +214,8 @@ function App() {
     const [subject, setSubject] = useState()
     const [subjects, setSubjects] = useState()
     const [genres, setGenres] = useState()
+    const [users, setUsers] = useState()
+    const [pass, setPass] = useState()
 
     async function myGamesClickHandle() {
     console.log("kliknieto games")
@@ -256,6 +282,7 @@ function App() {
             title : gameName
         })
         const response = await queryForRatingGame({
+            "login" : login,
             "title" : gameName.toString(),
             "points" : points
         });
@@ -379,17 +406,26 @@ function App() {
         await setGenres(response)
         // setLoaded(true)
     }
+    async function getAllUsersClickHandle() {
+        setLoaded(false)
+        const response = await queryForAllusers({});
+        console.log(response)
+        await setUsers(response)
+        // setLoaded(true)
+    }
+    async function createUserClickHandle() {
+        setLoaded(false)
+        const response = await queryCreateUser({
+            "login" : login,
+            "pass" : pass
+        });
+        console.log(response)
+        // setLoaded(true)
+    }
 
   return (
       <>
           <Container>
-        {/*<div className="min-vh-100 modal-dialog-centered "*/}
-        {/*     style={{overflow: 'scroll initial',*/}
-        {/*       backgroundPosition: 'center',*/}
-        {/*       backgroundSize: 'cover',*/}
-        {/*       backgroundRepeat: 'no-repeat',*/}
-        {/*       backgroundAttachment: 'fixed'*/}
-        {/*     }}>*/}
         <Button
         onClick={myGamesClickHandle}
         >
@@ -481,6 +517,12 @@ function App() {
 
                       <div className="form-group mt-3">
                           <label>RateGame</label>
+                          <input
+                              required
+                              className="form-control mt-1"
+                              placeholder="Enter user login"
+                              onChange={e => setLogin(e.target.value)}
+                          />
                           <input
                               required
                               className="form-control mt-1"
@@ -709,6 +751,44 @@ function App() {
                           onClick={addSubjectToGameClickHandle}
                       >
                           Add Subject Of Game
+                      </Button>
+                  </Form.Group>
+              </Form>
+              <Button
+                  onClick={getAllUsersClickHandle}
+              >
+                  All Users
+              </Button>
+              <ListGroup>
+                  {users != null &&
+                      users.map((item) => (
+                              <ListGroup.Item>{item.login}</ListGroup.Item>
+                            )
+                      ) }
+              </ListGroup>
+              <Form>
+                  <Form.Group>
+
+                      <div className="form-group mt-3">
+                          <label>Create new user</label>
+                          <input
+                              required
+                              className="form-control mt-1"
+                              placeholder="Enter login"
+                              onChange={e => setLogin(e.target.value)}
+                          />
+                          <input
+                              required
+                              className="form-control mt-1"
+                              placeholder="Enter password"
+                              onChange={e => setPass(e.target.value)}
+                          />
+                      </div>
+
+                      <Button
+                          onClick={createUserClickHandle}
+                      >
+                          Create new user
                       </Button>
                   </Form.Group>
               </Form>
