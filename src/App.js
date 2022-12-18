@@ -118,7 +118,7 @@ async function queryGetAuthorsOfGame(request) {
 }
 
 async function queryForAllusers() {
-    return fetch('http://localhost:8080/api/getAllUsers', {
+    return fetch('https://cloudproject-production.up.railway.app/api/getAllUsers', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -128,7 +128,7 @@ async function queryForAllusers() {
 }
 
 async function queryCreateUser(request) {
-    return fetch('http://localhost:8080/api/createUser', {
+    return fetch('https://cloudproject-production.up.railway.app/api/createUser', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
