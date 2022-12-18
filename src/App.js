@@ -8,10 +8,8 @@ async function queryForMyGames(request) {
     headers: {
       'Content-Type': 'application/json'
     },
-    // body: JSON.stringify(request)
   })
       .then(data => data.json())
-  // console.log(data)
 }
 
 async function queryForRatingsOfGame(request) {
@@ -24,8 +22,6 @@ async function queryForRatingsOfGame(request) {
         body: JSON.stringify(request)
     })
         .then(data => data.json())
-    // console.log(data)
-
 }
 
 async function queryForAverageRatingsOfGame(request) {
@@ -38,8 +34,6 @@ async function queryForAverageRatingsOfGame(request) {
         body: JSON.stringify(request)
     })
         .then(data => data.json())
-    // console.log(data)
-
 }
 async function queryForCreateNewGame(request) {
     console.log(request)
@@ -51,8 +45,6 @@ async function queryForCreateNewGame(request) {
         body: JSON.stringify(request)
     })
         .then(data => data.json())
-    // console.log(data)
-
 }
 async function queryForRatingGame(request) {
     console.log(request)
@@ -64,8 +56,6 @@ async function queryForRatingGame(request) {
         body: JSON.stringify(request)
     })
         .then(data => data.json())
-    // console.log(data)
-
 }
 async function queryFor5BestGames() {
     return  fetch('https://cloudproject-production.up.railway.app/api/topfivegames', {
@@ -75,8 +65,6 @@ async function queryFor5BestGames() {
         },
     })
         .then(data => data.json())
-    // console.log(data)
-
 }
 async function queryGetTitleContains(request) {
     console.log(request)
@@ -88,8 +76,6 @@ async function queryGetTitleContains(request) {
         body: JSON.stringify(request)
     })
         .then(data => data.json())
-    // console.log(data)
-
 }
 
 async function queryAddingAuthorOfGame(request) {
@@ -102,8 +88,6 @@ async function queryAddingAuthorOfGame(request) {
         body: JSON.stringify(request)
     })
         .then(data => data.json())
-    // console.log(data)
-
 }
 async function queryGetAuthorsOfGame(request) {
     console.log(request)
@@ -148,7 +132,6 @@ async function queryAddGenreToGame(request) {
         body: JSON.stringify(request)
     })
         .then(data => data.json())
-    // console.log(data)
 
 }
 async function queryAddSubjectToGame(request) {
@@ -161,7 +144,6 @@ async function queryAddSubjectToGame(request) {
         body: JSON.stringify(request)
     })
         .then(data => data.json())
-    // console.log(data)
 
 }
 async function queryGetSubjectsOfGame(request) {
@@ -174,7 +156,6 @@ async function queryGetSubjectsOfGame(request) {
         body: JSON.stringify(request)
     })
         .then(data => data.json())
-    // console.log(data)
 
 }
 async function queryGetGenresOfGame(request) {
@@ -187,7 +168,6 @@ async function queryGetGenresOfGame(request) {
         body: JSON.stringify(request)
     })
         .then(data => data.json())
-    // console.log(data)
 
 }
 
@@ -668,6 +648,9 @@ function App() {
                         </Button>
                     </Form.Group>
                 </Form>
+                <div>
+                All Users
+                </div>
                 <Button
                     onClick={getAllUsersClickHandle}
                 >
