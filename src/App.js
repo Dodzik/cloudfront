@@ -455,7 +455,7 @@ function App() {
                     <Form.Group>
 
                         <div className="form-group mt-3">
-                            <label>Filtering Game Titles with regex</label>
+                            <label>Filtering Game Titles with checking if contains this chain</label>
                             <input
                                 required
                                 className="form-control mt-1"
